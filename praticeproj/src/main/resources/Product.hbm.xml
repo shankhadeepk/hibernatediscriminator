@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.sample.beans.Product" table="Product" discriminator-value="P">
+        <id name="id">
+            <column name="id"/>
+        </id>
+        <discriminator column="product_type" type="java.lang.String"/>
+        <property name="name" type="java.lang.String">
+            <column name="name"/>
+        </property>
+        <subclass name="com.sample.beans.Hat" discriminator-value="H">
+            <property name="size">
+                <column name="size"/>
+            </property>
+        </subclass>
+        <subclass name="com.sample.beans.Socks" discriminator-value="S">
+            <property name="size">
+                <column name="size"/>
+            </property>
+        </subclass>
+
+    </class>
+</hibernate-mapping>
